@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.dots_and_boxes/com.example.dots_and_boxes.HelloApplication
+                            <mainClass>com.example.dots_and_boxes/com.example.dots_and_boxes.Game
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
