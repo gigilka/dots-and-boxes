@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="389.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dots_and_boxes.GameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="304.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dots_and_boxes.GameController">
     <children>
         <Circle fx:id="p1" layoutX="21.0" layoutY="24.0" onMouseClicked="#click1" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
         <Circle fx:id="p2" layoutX="132.0" layoutY="24.0" onMouseClicked="#click2" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
@@ -46,5 +47,12 @@
         <Line fx:id="l1115" endX="-103.0" endY="59.999969482421875" layoutX="346.0" layoutY="212.0" startX="-103.0" startY="-25.99999237060547" visible="false" />
         <Line fx:id="l1014" endX="-103.0" endY="59.999969482421875" layoutX="235.0" layoutY="212.0" startX="-103.0" startY="-25.99999237060547" visible="false" />
         <Line fx:id="l913" endX="-103.0" endY="59.999969482421875" layoutX="125.0" layoutY="212.0" startX="-103.0" startY="-25.99999237060547" visible="false" />
+      <Label layoutX="431.0" layoutY="20.0" prefHeight="22.0" prefWidth="48.0" text="Score: " />
+      <Label fx:id="score" layoutX="442.0" layoutY="42.0" prefHeight="17.0" prefWidth="20.0" text="0" />
+      <Label layoutX="432.0" layoutY="70.0" prefHeight="22.0" prefWidth="48.0" text="ID:" />
+      <Label fx:id="id" layoutX="452.0" layoutY="72.0" prefHeight="17.0" prefWidth="20.0" />
+      <Label layoutX="429.0" layoutY="100.0" text="Turn:" />
+      <Label fx:id="turn" layoutX="433.0" layoutY="117.0" prefHeight="17.0" prefWidth="76.0" />
+      <Line endX="101.5999755859375" endY="394.0" layoutX="318.0" layoutY="-90.0" startX="101.5999755859375" startY="90.0" />
     </children>
 </Pane>
