@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Server {
+    int score1 = 0, score2 = 0;
     String[] lines = {"1-2", "2-3", "3-4",
             "5-6", "6-7", "7-8",
             "9-10", "10-11", "11-12",

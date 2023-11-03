@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -89,7 +90,7 @@ public class Client extends Application {
                         }
                     }
                     if (ar[0].equals("score")) {
-                        score++;
+                        score = Integer.parseInt(ar[1]);
                         System.out.println(score);
                         Platform.runLater(() -> {
                             mainCont.score.setText(String.valueOf(score));
@@ -175,6 +176,19 @@ public class Client extends Application {
                             }
                         });
                     }
+                        if (ar[0].equals("winner")){
+
+                            if (Integer.parseInt(ar[1])==id){
+                                Platform.runLater(() -> {
+                                    mainCont.win.setText("You win");
+                                });
+
+                            } else {
+                                Platform.runLater(() -> {
+                                    mainCont.win.setText("You lost");
+                                });
+                            }
+                        }
                 }
             } catch (IOException e) {
                 e.printStackTrace();

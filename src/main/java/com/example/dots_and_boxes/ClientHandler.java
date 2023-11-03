@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class ClientHandler implements Runnable {
@@ -36,6 +34,9 @@ public class ClientHandler implements Runnable {
                 System.out.println("Received message from client: " + message);
                 String[] ar = message.split(" ");
 
+                if (fieldIsEmpty()) {
+
+                }
                 //System.out.println(client.id); always ret -1 cause of order of code
                 if (ar[0].equals("idpo")) {
                     System.out.println(server.checkId(Integer.parseInt(ar[2])));
@@ -61,7 +62,8 @@ public class ClientHandler implements Runnable {
                                 server.gamefield.add(firstPoint + "-" + secondPoint);
                                 firstPoint = null;
                                 secondPoint = null;
-                                if (!isSquare()) {
+                                int tmpscore = isSquare();
+                                if ((tmpscore == 0)) {
                                     server.sendUpdate("switch" + ar[2]);
                                     switch (server.whichturn) {
                                         case 1:
@@ -71,7 +73,22 @@ public class ClientHandler implements Runnable {
                                             server.whichturn = 1;
                                             break;
                                     }
-                                } else out.println("score");
+                                } else switch (ar[2]) {
+                                    case "1":
+                                        server.score1 += tmpscore;
+                                        out.println("score " + server.score1);
+                                        break;
+                                    case "2":
+                                        server.score2 += tmpscore;
+                                        out.println("score " + server.score2);
+                                        break;
+                                }
+
+                            }
+                            if (fieldIsEmpty()) {
+                                if (server.score1>server.score2)
+                                    server.sendUpdate("winner 1");
+                                else server.sendUpdate("winner 2");
                             }
                         }
                         System.out.println(firstPoint + " " + secondPoint);
@@ -101,9 +118,9 @@ public class ClientHandler implements Runnable {
         return false;
     }
 
-    private boolean isSquare() {
+    private int isSquare() {
         int scorecount = 0;
-        ArrayList<Integer> is =new ArrayList<Integer>();
+        ArrayList<Integer> is = new ArrayList<>();
         for (int i = 0; i < server.squaresList.size(); i++) {
             int count = 0;
             for (int j = 0; j < server.squaresList.get(0).size(); j++) {
@@ -119,10 +136,15 @@ public class ClientHandler implements Runnable {
                 scorecount++;
             }
         }
-        for(int f=is.size();f>0;f--){
-            server.squaresList.remove(is.get(f));
+        for (int f = 0; f < is.size(); f++) {
+            int indexToRemove = is.get(f) - f;
+            server.squaresList.remove(indexToRemove);
         }
-        return scorecount != 0;
+        return scorecount;
+    }
+
+    private boolean fieldIsEmpty() {
+        return server.linesar.isEmpty();
     }
 
 }
